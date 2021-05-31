@@ -8,10 +8,10 @@ import lombok.Data;
 @AllArgsConstructor
 public class BankTransaction {
 	
-	private int id;
+	private Integer id;
 	private LocalDateTime data;
 	private Double valor;
-	private TipoTransacao tipoTransacao;
+	private TransactionType tipoTransacao;
 	private Customer customer;
 	private BankAccount receiver;
 

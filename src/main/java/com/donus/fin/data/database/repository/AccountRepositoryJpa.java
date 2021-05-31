@@ -11,6 +11,9 @@ public interface AccountRepositoryJpa extends JpaRepository<AccountData, Long>{
 			+ "(SELECT top 1 conta FROM ACCOUNT "
 					+ "WHERE agencia = :agencia order by conta desc), 0)", nativeQuery = true)
 	Long getLastCreatedAccount(Long agencia);
+	
+	@Query(value = "SELECT * FROM ACCOUNT WHERE AGENCIA = :agencia AND CONTA = :conta", nativeQuery = true)
+	AccountData findByFields(Long agencia, Long conta);
 
 
 }

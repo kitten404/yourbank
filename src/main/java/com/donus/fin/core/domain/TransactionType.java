@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class TipoTransacao {
+public class TransactionType {
 	
 	private int id;
 	private String codTransacao;

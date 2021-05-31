@@ -18,7 +18,7 @@ public class BankTransactionResponse {
 	private Long agencia;
 	private String digito;
 	
-	public BankTransactionResponse response(BankTransaction bankTrans) {
+	public static BankTransactionResponse response(BankTransaction bankTrans) {
 		return BankTransactionResponse.builder()
 		.data(bankTrans.getData())
 		.valor(bankTrans.getValor())

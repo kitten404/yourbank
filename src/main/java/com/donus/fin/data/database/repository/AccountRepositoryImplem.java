@@ -24,4 +24,9 @@ public class AccountRepositoryImplem implements AccountRepository{
 		return repository.getLastCreatedAccount(agencia);
 	}
 
+	@Override
+	public Account findByFields(Long agencia, Long conta) {
+		return repository.findByFields(agencia, conta).convert();
+	}
+
 }

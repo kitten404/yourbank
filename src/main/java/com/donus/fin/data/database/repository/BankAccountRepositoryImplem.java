@@ -18,4 +18,9 @@ public class BankAccountRepositoryImplem implements BankAccountRepository{
 		return repository.save(bankAccountData).convert();
 	}
 
+	@Override
+	public BankAccount FindByField(Integer id) {
+		return repository.findByField(id).convert();
+	}
+
 }

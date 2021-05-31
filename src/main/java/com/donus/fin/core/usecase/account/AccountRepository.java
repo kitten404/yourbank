@@ -7,5 +7,7 @@ public interface AccountRepository {
 	Account create(Account account);
 	
 	Long findLastAccount(Long agencia);
+	
+	Account findByFields(Long agencia, Long conta);
 
 }

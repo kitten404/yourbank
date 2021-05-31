@@ -5,5 +5,6 @@ import com.donus.fin.core.domain.Customer;
 public interface CustomerRepository {
 	
 	Customer create(Customer customer);
+	Customer findById(Integer id);
 
 }

@@ -19,4 +19,10 @@ public class CustomerRepositoryImplem implements CustomerRepository{
 		return repository.save(customerData).convert();
 	}
 
+	@Override
+	public Customer findById(Integer id) {
+		CustomerData customerData = repository.getOne(id);
+		return customerData.convert();
+	}
+
 }

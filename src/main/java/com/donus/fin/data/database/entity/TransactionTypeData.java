@@ -7,7 +7,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.donus.fin.core.domain.TransactionType;
+
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -16,13 +19,31 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class TipoTransacaoData {
+@Builder
+public class TransactionTypeData {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 	@Column(unique = true, nullable = false)
 	private String codTransacao;
 	private String descricao;
+	
+	public static TransactionTypeData convert(TransactionType transactionType) {
+		return TransactionTypeData.builder()
+		.codTransacao(transactionType.getCodTransacao())
+		.descricao(transactionType.getDescricao())
+		.id(transactionType.getId())
+		.build();
+	}
+	
+	public TransactionType convert() {
+		return new TransactionType(
+				id,
+				codTransacao,
+				descricao
+				);
+		
+	}
 
 }
