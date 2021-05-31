@@ -1,10 +1,13 @@
 package com.donus.fin.data.database.repository;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.donus.fin.core.domain.Account;
 import com.donus.fin.core.usecase.account.AccountRepository;
+import com.donus.fin.core.usecase.banktransaction.exception.NotFoundException;
 import com.donus.fin.data.database.entity.AccountData;
 
 @Repository
@@ -26,7 +29,10 @@ public class AccountRepositoryImplem implements AccountRepository{
 
 	@Override
 	public Account findByFields(Long agencia, Long conta) {
-		return repository.findByFields(agencia, conta).convert();
+		return Optional.ofNullable(repository.findByFields(agencia, conta))
+		.orElseThrow(() ->{
+			return new NotFoundException();
+		}).convert();
 	}
 
 }

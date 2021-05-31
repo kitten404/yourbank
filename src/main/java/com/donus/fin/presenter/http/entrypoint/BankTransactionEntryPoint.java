@@ -22,9 +22,7 @@ public class BankTransactionEntryPoint {
 	
 	@PostMapping
 	public ResponseEntity<?> createBankTransaction(@RequestBody @Valid CreateTransactionRequest request) throws FieldNotAcceptedException {
-		createBankTransactionUseCase.execute(request);
-		return null;
-		
+		return ResponseEntity.ok().body(createBankTransactionUseCase.execute(request));
 	}
 
 }

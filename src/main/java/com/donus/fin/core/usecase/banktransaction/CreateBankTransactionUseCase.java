@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 import com.donus.fin.core.domain.Account;
 import com.donus.fin.core.domain.BankAccount;
 import com.donus.fin.core.domain.BankTransaction;
-import com.donus.fin.core.domain.Customer;
 import com.donus.fin.core.domain.TransactionType;
 import com.donus.fin.core.usecase.account.FindAccountUseCase;
 import com.donus.fin.core.usecase.bankaccount.FindBankAccountUseCase;

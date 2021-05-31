@@ -1,0 +1,97 @@
+{
+	"info": {
+		"_postman_id": "0216b163-5c7e-478b-b166-65c045f3115c",
+		"name": "YourBank",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create conta bancaria",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cpf\":\"46588775890\",\r\n    \"nome\":\"Quezia Quirino\",\r\n    \"agencia\":9695\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/bank-account",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"bank-account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create nova transacao bancária",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\t{\r\n    \"agenciaRemetente\":2390,\r\n    \"contaRemetente\":29011,\r\n\t\"valor\" : 2001.00,\r\n\t\"agenciaReceptora\":2390,\r\n\t\"contaReceptora\":2900,\r\n\t\"tipoTransacao\" : 2\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/bank-transaction",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"bank-transaction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Nova Transacao",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/bank-transaction?agencia=2390&conta=29011",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"bank-transaction"
+					],
+					"query": [
+						{
+							"key": "agencia",
+							"value": "2390"
+						},
+						{
+							"key": "conta",
+							"value": "29011"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
