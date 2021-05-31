@@ -1,5 +1,7 @@
 package com.donus.fin.data.database.repository;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.donus.fin.core.domain.BankTransaction;
@@ -16,5 +18,11 @@ public class BankTransactionRepositoryImplem implements BankTransactionRepositor
 		BankTransactionData bankTransactionData = BankTransactionData.convert(bankTransaction);
 		return repository.save(bankTransactionData).convert();
 	}
+
+	@Override
+	public List<BankTransaction> getTransactionUseCaseByAccount(Integer id) {	
+		return BankTransactionData.convertToList(repository.getTransactionByAccount(id));
+	}
+
 
 }

@@ -34,9 +34,6 @@ public class CreateBankTransactionUseCase {
 		BankAccount contaRemetente = this.checkConta(request.getAgenciaRemetente(), request.getContaRemetente());	
 		BankAccount contaReceptora = this.checkConta(request.getAgenciaReceptora(), request.getContaReceptora());
 		
-		//define o cliente da conta remetente
-		Customer customerRemetente = contaRemetente.getCustomer();
-		
 		//valida campos e limite da conta remetente
 		this.validateFields(transactionType.getCodTransacao(),request.getValor());
 		this.checkLimite(request.getValor(), contaRemetente.getValor());
@@ -44,7 +41,7 @@ public class CreateBankTransactionUseCase {
 		
 		//finaliza a transacao e grava o que aconteceu
 		BankTransaction bkt = new BankTransaction(null, LocalDateTime.now(),
-				request.getValor(), transactionType, customerRemetente, contaReceptora);
+				request.getValor(), transactionType, contaRemetente.getCustomer(), contaReceptora);
 		
 		return BankTransactionResponse.response(repository.createBankTransaction(bkt));
 	}

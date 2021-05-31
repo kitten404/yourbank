@@ -1,6 +1,8 @@
 package com.donus.fin.data.database.entity;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -68,6 +70,14 @@ public class BankTransactionData {
 					customer.convert(),
 					receiver.convert()
 				);
+	}
+	
+	public static List<BankTransaction> convertToList(List<BankTransactionData> transactions) {
+		List<BankTransaction> list = new ArrayList<BankTransaction>();
+		transactions.forEach(e ->{
+			list.add(e.convert());
+		});
+		return list;
 	}
 
 }

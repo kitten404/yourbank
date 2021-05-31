@@ -11,6 +11,7 @@ import com.donus.fin.core.usecase.bankaccount.FindBankAccountUseCase;
 import com.donus.fin.core.usecase.bankaccount.UpdateBankAccountUseCase;
 import com.donus.fin.core.usecase.banktransaction.BankTransactionRepository;
 import com.donus.fin.core.usecase.banktransaction.CreateBankTransactionUseCase;
+import com.donus.fin.core.usecase.banktransaction.GetTransactionUseCase;
 import com.donus.fin.core.usecase.customer.CreateCustomerUseCase;
 import com.donus.fin.core.usecase.customer.FindCustomerUseCase;
 import com.donus.fin.core.usecase.transactiontype.FindTransactionTypeUseCase;
@@ -78,6 +79,11 @@ public class UseCaseConfig {
 	@Bean
 	public BankTransactionRepository bankTransactionRepository() {
 		return new BankTransactionRepositoryImplem();
+	}
+	
+	@Bean 
+	public GetTransactionUseCase getTransactionUseCase(BankTransactionRepository bankTransactionRepository,FindAccountUseCase findAccountUseCase, FindBankAccountUseCase findBankAccountUseCase) {
+		return new GetTransactionUseCase(bankTransactionRepository,findAccountUseCase,findBankAccountUseCase);
 	}
 
 }

@@ -1,8 +1,8 @@
 package com.donus.fin.presenter.http.entrypoint;
 
+
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import org.mockito.stubbing.Answer;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.util.Assert;
@@ -22,8 +22,14 @@ public class BankAccountEntryPointTest {
 	
 	@Test
 	public void createAccountOK() {
+		
 		Mockito.when(createBankAccountUseCase.execute(createRequestOK()))
-		.then((Answer<?>) responseOK());
+		.thenReturn(responseOK());
+		
+		BankAccountResponse bankAccountResponse = 
+				createBankAccountUseCase.execute(createRequestOK());
+		
+		Assert.notNull(bankAccountResponse);
 		
 	}
 	

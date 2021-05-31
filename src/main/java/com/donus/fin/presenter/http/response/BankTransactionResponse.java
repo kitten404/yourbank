@@ -1,6 +1,8 @@
 package com.donus.fin.presenter.http.response;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.donus.fin.core.domain.BankTransaction;
 
@@ -21,9 +23,20 @@ public class BankTransactionResponse {
 	public static BankTransactionResponse response(BankTransaction bankTrans) {
 		return BankTransactionResponse.builder()
 		.data(bankTrans.getData())
+		.conta(bankTrans.getReceiver().getConta().getConta())
+		.agencia(bankTrans.getReceiver().getConta().getAgencia())
+		.digito(bankTrans.getReceiver().getConta().getDigito())
 		.valor(bankTrans.getValor())
 		.tipoTransacao(bankTrans.getTipoTransacao().getDescricao())
 		.build();
+	}
+	
+	public static List<BankTransactionResponse> convertToList(List<BankTransaction> bankTrans){
+		List<BankTransactionResponse> list = new ArrayList<BankTransactionResponse>();
+		bankTrans.forEach(e -> {
+			list.add(response(e));
+		});
+		return list;
 	}
 
 }
