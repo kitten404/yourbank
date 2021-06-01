@@ -9,7 +9,7 @@ import com.donus.fin.core.domain.TransactionType;
 import com.donus.fin.core.usecase.account.FindAccountUseCase;
 import com.donus.fin.core.usecase.bankaccount.FindBankAccountUseCase;
 import com.donus.fin.core.usecase.bankaccount.UpdateBankAccountUseCase;
-import com.donus.fin.core.usecase.banktransaction.exception.FieldNotAcceptedException;
+import com.donus.fin.core.usecase.banktransaction.exception.GeneralError;
 import com.donus.fin.core.usecase.transactiontype.FindTransactionTypeUseCase;
 import com.donus.fin.presenter.http.request.CreateTransactionRequest;
 import com.donus.fin.presenter.http.response.BankTransactionResponse;
@@ -26,7 +26,7 @@ public class CreateBankTransactionUseCase {
 	
 	private BankTransactionRepository repository;
 	
-	public BankTransactionResponse execute(CreateTransactionRequest request) throws FieldNotAcceptedException {
+	public BankTransactionResponse execute(CreateTransactionRequest request){
 		TransactionType transactionType =
 				transactionTypeUseCase.execute(request.getTipoTransacao());
 		
@@ -45,21 +45,21 @@ public class CreateBankTransactionUseCase {
 		return BankTransactionResponse.response(repository.createBankTransaction(bkt));
 	}
 	
-	private void validateFields(String codTransacao, Double val) throws FieldNotAcceptedException {
+	private void validateFields(String codTransacao, Double val) {
 		if(codTransacao.equals("DEPOSITO") && val > 2000) {
-			throw new FieldNotAcceptedException("Não é possível transacionar esse valor em depósito", new Exception());
+			throw new GeneralError("Não é possível transacionar esse valor em depósito");
 		}
 	}
 	
 	private BankAccount checkConta(Long agencia, Long conta) {
 		Account contaRepo = findAccountUseCase.execute(agencia, conta);
-		BankAccount contaReceptora = findBankAccountUseCase.execute(contaRepo.getId());
-		return contaReceptora;
+		BankAccount bankAccount = findBankAccountUseCase.execute(contaRepo.getId());
+		return bankAccount;
 	}
 	
-	private void checkLimite(Double valorTransfer, Double valorConta) throws FieldNotAcceptedException {
+	private void checkLimite(Double valorTransfer, Double valorConta) {
 		if(!(valorConta >= valorTransfer)) {
-			throw new FieldNotAcceptedException("A sua conta não possui limite para essa transaçao", new Exception());
+			throw new GeneralError("A conta não tem limite para transação");
 		} 
 	}
 	

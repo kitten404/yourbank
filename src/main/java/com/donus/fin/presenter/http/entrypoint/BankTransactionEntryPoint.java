@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.donus.fin.core.usecase.banktransaction.CreateBankTransactionUseCase;
-import com.donus.fin.core.usecase.banktransaction.exception.FieldNotAcceptedException;
 import com.donus.fin.presenter.http.request.CreateTransactionRequest;
 import com.donus.fin.presenter.http.response.BankTransactionResponse;
 
@@ -22,7 +21,7 @@ public class BankTransactionEntryPoint {
 	private CreateBankTransactionUseCase createBankTransactionUseCase;
 	
 	@PostMapping
-	public ResponseEntity<BankTransactionResponse> createBankTransaction(@RequestBody @Valid CreateTransactionRequest request) throws FieldNotAcceptedException {
+	public ResponseEntity<BankTransactionResponse> createBankTransaction(@RequestBody @Valid CreateTransactionRequest request) {
 		return ResponseEntity.ok().body(createBankTransactionUseCase.execute(request));
 	}
 

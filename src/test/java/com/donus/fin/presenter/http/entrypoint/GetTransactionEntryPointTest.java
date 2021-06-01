@@ -39,9 +39,6 @@ import com.donus.fin.presenter.http.response.BankTransactionResponse;
 @SpringBootTest
 public class GetTransactionEntryPointTest {
 	
-	
-	private MockMvc mockMvc;
-	
 	@Mock
 	private GetTransactionUseCase getTransactionUseCase;
 	
@@ -68,20 +65,6 @@ public class GetTransactionEntryPointTest {
 		list.add(bankTrans);
 		return BankTransactionResponse.convertToList(list);
 		
-	}
-	@Test
-	public void whenNoHandlerForHttpRequest_thenNotFound() throws Exception {
-		mockMvc = MockMvcBuilders.standaloneSetup(RestException.class).setHandlerExceptionResolvers(new ExceptionHandlerExceptionResolver()).build();
-		
-		 MvcResult mvcResult  = mockMvc.perform(get("/v1/bank-transaction")
-				.contentType(MediaType.APPLICATION_JSON)
-				.param("conta", "123")
-				.param("agencia", "1234")
-				.accept(MediaType.APPLICATION_JSON))
-		.andExpect(status().isNotFound())
-		.andReturn();
-		
-		//Assert.assertTrue(mvcResult.getResponse().getContentAsString().contains("Recurso não Encontrado!"));
 	}
 
 }

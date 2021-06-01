@@ -14,7 +14,6 @@ import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.donus.fin.core.domain.BankTransaction;
-import com.donus.fin.core.domain.Customer;
 import com.donus.fin.core.usecase.banktransaction.exception.NotFoundException;
 import com.donus.fin.data.database.entity.AccountData;
 import com.donus.fin.data.database.entity.BankAccountData;
@@ -33,8 +32,6 @@ public class BankTransactionRepositoryImplemTest {
 	
 	@Test
 	public void createBankTransaction() {
-		
-		BankTransactionData bk = createAccountData();
 				
 		Mockito.when(repository.save(createAccountData()))
 			.thenReturn(createAccountDataReturn());
@@ -98,15 +95,5 @@ public class BankTransactionRepositoryImplemTest {
 	private CustomerData createCustomerData() {
 		return new CustomerData(1, "12325232523","Teste Teste");
 	}
-	
-	private Customer createCustomer() {
-		return new Customer(1, "12325232523","Teste Teste");
-	}
-	
-	/*private List<BankTransaction> listTransactions(){
-		BankTransaction bt = 
-				new BankTransaction(1, LocalDateTime.now(), 200.00, new TransactionType(1, "X", "X"), createCustomer(), bankAccountReturn());
-		return Arrays.asList(bt);
-	}*/
 
 }

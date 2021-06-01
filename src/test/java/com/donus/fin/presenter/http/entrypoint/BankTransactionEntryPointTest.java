@@ -12,7 +12,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import com.donus.fin.core.usecase.banktransaction.CreateBankTransactionUseCase;
-import com.donus.fin.core.usecase.banktransaction.exception.FieldNotAcceptedException;
 import com.donus.fin.presenter.http.request.CreateTransactionRequest;
 import com.donus.fin.presenter.http.response.BankTransactionResponse;
 
@@ -26,7 +25,7 @@ public class BankTransactionEntryPointTest {
 	private BankTransactionEntryPoint bankTransactionEntryPoint;
 	
 	@Test
-	public void createTransactionEntryPoint() throws FieldNotAcceptedException {
+	public void createTransactionEntryPoint() {
 		
 		Mockito.when(createBankTransactionUseCase.execute(requestOk()))
 		.thenReturn(responseOk());
