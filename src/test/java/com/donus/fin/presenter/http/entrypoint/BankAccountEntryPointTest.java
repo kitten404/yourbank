@@ -1,11 +1,13 @@
 package com.donus.fin.presenter.http.entrypoint;
 
-
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.util.Assert;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 import com.donus.fin.core.domain.Account;
 import com.donus.fin.core.domain.BankAccount;
@@ -17,8 +19,11 @@ import com.donus.fin.presenter.http.response.BankAccountResponse;
 @SpringBootTest
 public class BankAccountEntryPointTest {
 	
-	@MockBean
+	@Mock
 	private CreateBankAccountUseCase createBankAccountUseCase;
+	
+	@InjectMocks
+	private BankAccountEntryPoint bankAccountEntryPoint;
 	
 	@Test
 	public void createAccountOK() {
@@ -26,10 +31,10 @@ public class BankAccountEntryPointTest {
 		Mockito.when(createBankAccountUseCase.execute(createRequestOK()))
 		.thenReturn(responseOK());
 		
-		BankAccountResponse bankAccountResponse = 
-				createBankAccountUseCase.execute(createRequestOK());
+		ResponseEntity<BankAccountResponse> response = 
+				bankAccountEntryPoint.createBankAccount(createRequestOK());
 		
-		Assert.notNull(bankAccountResponse);
+		Assert.assertEquals(HttpStatus.OK, response.getStatusCode());
 		
 	}
 	

@@ -19,7 +19,7 @@ public class RestException {
     }
     
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public Object handleMethodArgumentNotValid(
+    public Object processInvalidField(
     		  MethodArgumentNotValidException ex) {
     	
     		    List<String> errors = new ArrayList<String>();
@@ -31,5 +31,11 @@ public class RestException {
     		    return new ResponseEntity<Object>(errors,
     		    		   HttpStatus.BAD_REQUEST);
     		}
+    
+    @ExceptionHandler(GeneralError.class)
+    public Object processGenericError(GeneralError ex) {
+       return new ResponseEntity<Object>(MessageResponse.createResponse(ex.getMensagem()),
+    		   HttpStatus.NOT_FOUND);
+    }
 
 }

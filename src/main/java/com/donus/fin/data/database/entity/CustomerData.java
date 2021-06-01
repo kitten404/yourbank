@@ -42,8 +42,8 @@ public class CustomerData {
 	public Customer convert() {
 		return new Customer(
 				id,
-				nome,
-				cpf
+				cpf,
+				nome
 				);
 				
 	}

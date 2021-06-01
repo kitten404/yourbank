@@ -1,7 +1,5 @@
 package com.donus.fin.core.usecase.banktransaction.exception;
 
-import java.util.List;
-
 import lombok.Getter;
 
 @Getter

@@ -25,7 +25,7 @@ public class CreateBankAccountUseCase {
 				createAccountUseCase.execute(request.getAgencia());
 		
 		BankAccount bankAccountCreate = 
-				new BankAccount(null, 0.0, account, customer);
+				new BankAccount(null, 10.0, account, customer);
 		
 		BankAccount bankAccount =
 				bankAccountRepository.create(bankAccountCreate);

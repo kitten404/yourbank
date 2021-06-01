@@ -24,7 +24,10 @@ public class AccountRepositoryImplem implements AccountRepository{
 
 	@Override
 	public Long findLastAccount(Long agencia) {
-		return repository.getLastCreatedAccount(agencia);
+		return Optional.ofNullable(repository.getLastCreatedAccount(agencia))
+				.orElseThrow(() -> {
+					return new NotFoundException();
+				});
 	}
 
 	@Override
