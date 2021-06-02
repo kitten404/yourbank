@@ -8,7 +8,7 @@
 
 4 - verificar se o projeto se auto configurou a jre library como javaSE11, caso nao:
    4.1 - ir no project explorer, botao direito no projeto -> properties -> java build path -> Modulepath -> Add Library -> Jre system library -> next -> alternate jre ->         installed jre add -> Standard VM -> Directory -> selecionar javaSe11 -> finish
-   4.2 - em properties -> java build path -> Modulepath -> Add Library -> Jre system library -> next -> alternate jre : escolha jdk16.01
+   4.2 - em properties -> java build path -> Modulepath -> Add Library -> Jre system library -> next -> alternate jre : escolha javaSe11
 
 5 - Clean no projeto 
 
