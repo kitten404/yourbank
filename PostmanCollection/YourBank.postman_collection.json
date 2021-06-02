@@ -12,7 +12,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"cpf\":\"46588775890\",\r\n    \"nome\":\"Quezia Quirino\",\r\n    \"agencia\":9695\r\n\r\n}",
+					"raw": "{\r\n    \"cpf\":\"12352624265\",\r\n    \"nome\":\"Joao Silva\",\r\n    \"agencia\":9695\r\n\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -41,7 +41,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "\t{\r\n    \"agenciaRemetente\":2390,\r\n    \"contaRemetente\":29011,\r\n\t\"valor\" : 2001.00,\r\n\t\"agenciaReceptora\":2390,\r\n\t\"contaReceptora\":2900,\r\n\t\"tipoTransacao\" : 2\r\n    }",
+					"raw": "\t{\r\n    \"agenciaRemetente\":2390,\r\n    \"contaRemetente\":29011,\r\n\t\"valor\" : 250.78,\r\n\t\"agenciaReceptora\":2390,\r\n\t\"contaReceptora\":2900,\r\n\t\"tipoTransacao\" : 2\r\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
