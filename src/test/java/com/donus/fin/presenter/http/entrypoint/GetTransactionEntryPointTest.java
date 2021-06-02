@@ -1,30 +1,17 @@
 package com.donus.fin.presenter.http.entrypoint;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
-import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver;
 
 import com.donus.fin.core.domain.Account;
 import com.donus.fin.core.domain.BankAccount;
@@ -32,8 +19,6 @@ import com.donus.fin.core.domain.BankTransaction;
 import com.donus.fin.core.domain.Customer;
 import com.donus.fin.core.domain.TransactionType;
 import com.donus.fin.core.usecase.banktransaction.GetTransactionUseCase;
-import com.donus.fin.core.usecase.banktransaction.exception.NotFoundException;
-import com.donus.fin.core.usecase.banktransaction.exception.RestException;
 import com.donus.fin.presenter.http.response.BankTransactionResponse;
 
 @SpringBootTest
@@ -46,7 +31,7 @@ public class GetTransactionEntryPointTest {
 	private GetTransactionEntryPoint getTransactionEntryPoint;
 	
 	@Test
-	public void getTransactionEntryPoint() {
+	public void getTransactionEntryPoint() throws Exception {
 		
 		Mockito.when(getTransactionUseCase.getTransactionByAccount((long)123, (long)1234))
 		.thenReturn(responseOK());

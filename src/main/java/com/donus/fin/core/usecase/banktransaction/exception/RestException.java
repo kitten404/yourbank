@@ -35,7 +35,7 @@ public class RestException {
     @ExceptionHandler(GeneralError.class)
     public Object processGenericError(GeneralError ex) {
        return new ResponseEntity<Object>(MessageResponse.createResponse(ex.getMensagem()),
-    		   HttpStatus.NOT_FOUND);
+    		   HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
 }
