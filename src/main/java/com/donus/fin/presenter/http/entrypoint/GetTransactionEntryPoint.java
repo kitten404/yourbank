@@ -21,6 +21,7 @@ public class GetTransactionEntryPoint {
 	@Autowired
 	private GetTransactionUseCase getTransactionUseCase;
 	
+	//lista todas transações bancária de uma determinada conta
 	@GetMapping
 	public ResponseEntity<List<BankTransactionResponse>> getTransactionByAccount(@Valid @RequestParam Long agencia, @RequestParam Long conta) {
 		return ResponseEntity.ok(

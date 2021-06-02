@@ -20,6 +20,7 @@ public class BankTransactionEntryPoint {
 	@Autowired
 	private CreateBankTransactionUseCase createBankTransactionUseCase;
 	
+	//cria transação bancária
 	@PostMapping
 	public ResponseEntity<BankTransactionResponse> createBankTransaction(@RequestBody @Valid CreateTransactionRequest request) {
 		return ResponseEntity.ok().body(createBankTransactionUseCase.execute(request));

@@ -23,6 +23,7 @@ public class BankAccountEntryPoint {
 	@Autowired
 	private CreateBankAccountUseCase createBankAccountUseCase;
 	
+	//Abre conta no banco
 	@PostMapping
 	public ResponseEntity<BankAccountResponse> createBankAccount(@RequestBody @Valid CreateBankAccountRequest request){
 		return ResponseEntity.ok().body(createBankAccountUseCase.execute(request));
