@@ -7,8 +7,9 @@
 3 - Ir em file -> import -> existing maven projects -> browse -> selecionar a pasta do projeto finish
 
 4 - verificar se o projeto se auto configurou a jre library como javaSE11, caso nao:
-   4.1 - ir no project explorer, botao direito no projeto -> properties -> java build path -> Modulepath -> Add Library -> Jre system library -> next -> alternate jre ->         installed jre add -> Standard VM -> Directory -> selecionar javaSe11 -> finish
-   4.2 - em properties -> java build path -> Modulepath -> Add Library -> Jre system library -> next -> alternate jre : escolha javaSe11
+   4.1 - baixar javaSE11 - https://www.oracle.com/br/java/technologies/javase-jdk11-downloads.html
+   4.2 - ir no project explorer, botao direito no projeto -> properties -> java build path -> Modulepath -> Add Library -> Jre system library -> next -> alternate jre ->           installed jre add -> Standard VM -> Directory -> selecionar javaSe11 -> finish
+   4.3 - em properties -> java build path -> Modulepath -> Add Library -> Jre system library -> next -> alternate jre : escolha javaSe11
 
 5 - Clean no projeto 
 
